@@ -1,12 +1,13 @@
-import PokemonList from "../components/PokemonList";
+import List from "../components/List";
+import PokemonListItem from "../components/PokemonListItem";
 
 export default function Pokedex() {
   return (
     <>
       <h1 className="text-4xl font-bold my-5 text-center">Pokedex</h1>
       <div className="flex justify-center w-full">
-        <PokemonList
-          pokemons={[
+        <List
+          items={[
             { name: "Bulbasaur", id: 1 },
             { name: "Charmander", id: 4 },
             { name: "Squirtle", id: 7 },
@@ -18,6 +19,7 @@ export default function Pokedex() {
             { name: "Machop", id: 66 },
             { name: "Magnemite", id: 81 },
           ]}
+          ListItem={PokemonListItem}
         />
       </div>
     </>
