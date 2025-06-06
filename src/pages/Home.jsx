@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <>
@@ -10,9 +12,11 @@ export default function Home() {
       </div>
 
       <div className="flex justify-center">
-        <button className="bg-blue-950 p-3 rounded-md hover:bg-blue-900 transition hover:underline ">
-          <a href="/pokedex">Learn more about the pokémons</a>
-        </button>
+        <Link to={"/pokedex"}>
+          <button className="bg-blue-950 p-3 rounded-md hover:bg-blue-900 transition-colors hover:underline hover:cursor-pointer ">
+            Learn more about the pokémons
+          </button>
+        </Link>
       </div>
     </>
   );
