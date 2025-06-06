@@ -1,24 +1,26 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <nav className="flex justify-between items-center p-5">
-      <a className="hover:underline" href="/home">
+      <Link className="hover:underline" to="/home">
         Home
-      </a>
-      <a className="hover:underline" href="/pokedex">
+      </Link>
+      <Link className="hover:underline" to="/pokedex">
         Pokédex
-      </a>
-      <a className="hover:underline" href="/trainers">
+      </Link>
+      <Link className="hover:underline" to="/trainers">
         Trainers
-      </a>
-      <a className="hover:underline" href="/teams">
+      </Link>
+      <Link className="hover:underline" to="/teams">
         Teams
-      </a>
-      <a className="hover:underline" href="/items">
+      </Link>
+      <Link className="hover:underline" to="/items">
         Items
-      </a>
-      <a className="hover:underline" href="/items">
+      </Link>
+      <Link className="hover:underline" to="/items">
         Contact
-      </a>
+      </Link>
     </nav>
   );
 }
