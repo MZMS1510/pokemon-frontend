@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center gap-3">
+    <footer className="flex flex-col items-center gap-3 my-5">
       <a className="text-center hover:underline" href="/about">
         About Us
       </a>
