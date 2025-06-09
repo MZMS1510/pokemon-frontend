@@ -19,7 +19,9 @@ export default function ItemListItem({ item = {} }) {
   return (
     <li
       key={id}
-      className={`flex flex-col mb-4 w-full justify-center p-4 rounded-lg ${getTypeColor(type)} hover:opacity-80 hover:cursor-pointer transition duration-300`}
+      className={`flex flex-col mb-4 w-full justify-center p-4 rounded-lg ${getTypeColor(
+        type
+      )} hover:opacity-80 hover:cursor-pointer transition duration-300`}
     >
       <div className="text-2xl flex justify-start gap-5 text-white">
         <p className="opacity-80">#{id}</p>
