@@ -13,13 +13,10 @@ export default function Header() {
         <Link className="hover:underline" to="/trainers">
           Trainers
         </Link>
-        <Link className="hover:underline" to="/teams">
-          Teams
-        </Link>
         <Link className="hover:underline" to="/items">
           Items
         </Link>
-        <Link className="hover:underline" to="/items">
+        <Link className="hover:underline" to="/contact">
           Contact
         </Link>
       </nav>

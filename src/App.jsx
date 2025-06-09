@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Pokedex from "./pages/Pokedex";
 import Trainers from "./pages/Trainers";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/pokedex" element={<Pokedex />} />
           <Route path="/trainers" element={<Trainers />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <Footer />
