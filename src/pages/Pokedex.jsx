@@ -18,19 +18,68 @@ export default function Pokedex() {
         setPokemon(response.data);
       } catch (err) {
         setError("Failed to fetch Pokemon data");
-        console.error("Error fetching Pokemon:", err);
-        // Fallback to static data if API fails
+        console.error("Error fetching Pokemon:", err); // Fallback to static data if API fails
         setPokemon([
-          { name: "Bulbasaur", id: 1 },
-          { name: "Charmander", id: 4 },
-          { name: "Squirtle", id: 7 },
-          { name: "Pidgey", id: 16 },
-          { name: "Rattata", id: 19 },
-          { name: "Jigglypuff", id: 39 },
-          { name: "Meowth", id: 52 },
-          { name: "Psyduck", id: 54 },
-          { name: "Machop", id: 66 },
-          { name: "Magnemite", id: 81 },
+          {
+            name: "Bulbasaur",
+            pokedex_id: 1,
+            primaryType: { name: "Grass" },
+            secondaryType: { name: "Poison" },
+          },
+          {
+            name: "Charmander",
+            pokedex_id: 4,
+            primaryType: { name: "Fire" },
+            secondaryType: null,
+          },
+          {
+            name: "Squirtle",
+            pokedex_id: 7,
+            primaryType: { name: "Water" },
+            secondaryType: null,
+          },
+          {
+            name: "Pidgey",
+            pokedex_id: 16,
+            primaryType: { name: "Normal" },
+            secondaryType: { name: "Flying" },
+          },
+          {
+            name: "Rattata",
+            pokedex_id: 19,
+            primaryType: { name: "Normal" },
+            secondaryType: null,
+          },
+          {
+            name: "Jigglypuff",
+            pokedex_id: 39,
+            primaryType: { name: "Normal" },
+            secondaryType: { name: "Fairy" },
+          },
+          {
+            name: "Meowth",
+            pokedex_id: 52,
+            primaryType: { name: "Normal" },
+            secondaryType: null,
+          },
+          {
+            name: "Psyduck",
+            pokedex_id: 54,
+            primaryType: { name: "Water" },
+            secondaryType: null,
+          },
+          {
+            name: "Machop",
+            pokedex_id: 66,
+            primaryType: { name: "Fighting" },
+            secondaryType: null,
+          },
+          {
+            name: "Magnemite",
+            pokedex_id: 81,
+            primaryType: { name: "Electric" },
+            secondaryType: { name: "Steel" },
+          },
         ]);
       } finally {
         setLoading(false);

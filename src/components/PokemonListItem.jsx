@@ -1,5 +1,5 @@
 export default function PokemonListItem({ item: pokemon = {} }) {
-  const { name, pokedex_id } = pokemon;
+  const { name, pokedex_id, primaryType, secondaryType } = pokemon;
 
   return (
     <li
@@ -11,12 +11,16 @@ export default function PokemonListItem({ item: pokemon = {} }) {
         <p>{name}</p>
       </div>
       <div className="flex justify-center mt-4 gap-5 text-xl">
-        <p className="border-2 border-white w-1/3 text-center rounded-4xl p-2">
-          Tipo 1
-        </p>
-        <p className="border-2 border-white w-1/3 text-center rounded-4xl p-2">
-          Tipo 2
-        </p>
+        {primaryType && (
+          <p className="border-2 border-white w-full text-center rounded-4xl p-2">
+            {primaryType.name}
+          </p>
+        )}
+        {secondaryType && (
+          <p className="border-2 border-white w-full text-center rounded-4xl p-2">
+            {secondaryType.name}
+          </p>
+        )}
       </div>
     </li>
   );
