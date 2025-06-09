@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Pokedex from "./pages/Pokedex";
 import Trainers from "./pages/Trainers";
 import Contact from "./pages/Contact";
+import Items from "./pages/Items";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/pokedex" element={<Pokedex />} />
           <Route path="/trainers" element={<Trainers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/items" element={<Items />} />
         </Routes>
       </main>
       <Footer />
