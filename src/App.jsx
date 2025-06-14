@@ -12,6 +12,8 @@ import Pokedex from "./pages/Pokedex";
 import Trainers from "./pages/Trainers";
 import Contact from "./pages/Contact";
 import Items from "./pages/Items";
+import PokemonDetail from "./pages/PokemonDetail";
+import TrainerDetail from "./pages/TrainerDetail";
 
 function App() {
   return (
@@ -22,9 +24,13 @@ function App() {
           <Route path="*" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/pokedex" element={<Pokedex />} />
+          <Route path="/pokemons" element={<Pokedex />} />
+          <Route path="/pokemons/:id" element={<PokemonDetail />} />
           <Route path="/trainers" element={<Trainers />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/trainers/:id" element={<TrainerDetail />} />
           <Route path="/items" element={<Items />} />
+          {/* <Route path="/items/:id" element={<ItemDetails />} /> */}
+          <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<Home />} />
         </Routes>
       </main>

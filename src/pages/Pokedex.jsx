@@ -15,7 +15,10 @@ export default function Pokedex() {
         const response = await axios.get(
           "http://localhost:3000/api/pokemon-species"
         );
-        setPokemon(response.data);
+        const sortedPokemon = response.data.sort(
+          (a, b) => a.pokedex_id - b.pokedex_id
+        );
+        setPokemon(sortedPokemon);
       } catch (err) {
         setError("Failed to fetch Pokemon data");
         console.error("Error fetching Pokemon:", err); // Fallback to static data if API fails
