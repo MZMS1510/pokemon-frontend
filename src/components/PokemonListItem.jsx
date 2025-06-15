@@ -99,7 +99,11 @@ export default function PokemonListItem({ item: pokemon = {} }) {
     >
       <Link to={`/pokemons/${pokedex_id}`}>
         <div className="flex justify-start items-center gap-5">
-          <img src={spriteUrl} alt={`${name} sprite`} className="max-w-32" />
+          <img
+            src={spriteUrl}
+            alt={`${name} sprite`}
+            className="max-w-32 w-1/4"
+          />
           <p className="opacity-80 text-xl">#{pokedex_id}</p>
           <p className="font-bold text-4xl">{name}</p>
         </div>

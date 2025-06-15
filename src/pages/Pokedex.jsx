@@ -103,7 +103,7 @@ export default function Pokedex() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold my-5 text-center">Pokedex</h1>
+      <h1 className="text-4xl font-bold my-5 text-center">Pokédex</h1>
       {error && (
         <div className="text-center text-red-500 mb-4">
           {error} (Using fallback data)
