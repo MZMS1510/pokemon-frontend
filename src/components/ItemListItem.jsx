@@ -1,5 +1,5 @@
 export default function ItemListItem({ item = {} }) {
-  const { id, name, type, price, description } = item;
+  const { id, name, type, price, description, quantity } = item;
 
   const getTypeColor = (type) => {
     switch (type) {
@@ -26,6 +26,11 @@ export default function ItemListItem({ item = {} }) {
       <div className="text-2xl flex justify-start gap-5 text-white">
         <p className="opacity-80">#{id}</p>
         <p className="font-bold">{name}</p>
+        {quantity && quantity > 1 && (
+          <span className="bg-white text-gray-800 px-2 py-1 rounded-full text-sm font-bold">
+            x{quantity}
+          </span>
+        )}
       </div>
       <div className="flex justify-center mt-2 gap-5 text-lg text-white">
         <p className="border-2 border-white w-1/3 text-center rounded-lg p-2 capitalize">
