@@ -12,106 +12,104 @@ export default function Items() {
     const fetchItems = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3000/api/items");
-        setItems(response.data);
+        const response = await axios.get(
+          "http://localhost:3000/api/item-types"
+        );
+        // Transform the data to match what ItemListItem expects
+        const transformedItems = response.data.map((item) => ({
+          id: item.id,
+          name: item.name,
+          type: item.itemCategory?.name || "unknown",
+          description: item.description || "No description available.",
+          effect: item.effect,
+        }));
+        setItems(transformedItems);
+        setLoading(false);
       } catch (err) {
         setError("Failed to fetch items data");
-        console.error("Error fetching items:", err);
-        // Fallback to static data if API fails
+        console.error("Error fetching items:", err); // Fallback to static data if API fails
         setItems([
           {
             id: 1,
             name: "Poké Ball",
-            type: "pokeball",
-            price: 200,
+            type: "pokéballs",
             description:
               "A device for catching wild Pokémon. It's thrown like a ball at a Pokémon.",
           },
           {
             id: 2,
             name: "Great Ball",
-            type: "pokeball",
-            price: 600,
+            type: "pokéballs",
             description:
               "A good, high-performance Poké Ball that provides a higher catch rate than a standard Poké Ball.",
           },
           {
             id: 3,
             name: "Ultra Ball",
-            type: "pokeball",
-            price: 1200,
+            type: "pokéballs",
             description:
               "An ultra-high performance Poké Ball that provides an even higher catch rate than a Great Ball.",
           },
           {
             id: 4,
             name: "Master Ball",
-            type: "pokeball",
-            price: 99999,
+            type: "pokéballs",
             description:
               "The best Poké Ball with the ultimate level of performance. It will catch any wild Pokémon without fail.",
           },
           {
             id: 5,
             name: "Potion",
-            type: "healing",
-            price: 300,
+            type: "medicine",
             description:
               "A spray-type medicine for wounds. It restores the HP of one Pokémon by just 20 points.",
           },
           {
             id: 6,
             name: "Super Potion",
-            type: "healing",
-            price: 700,
+            type: "medicine",
             description:
               "A spray-type medicine for wounds. It restores the HP of one Pokémon by 50 points.",
           },
           {
             id: 7,
             name: "Hyper Potion",
-            type: "healing",
-            price: 1200,
+            type: "medicine",
             description:
               "A spray-type medicine for wounds. It restores the HP of one Pokémon by 200 points.",
           },
           {
             id: 8,
             name: "Max Potion",
-            type: "healing",
-            price: 2500,
+            type: "medicine",
             description:
               "A spray-type medicine for wounds. It completely restores the HP of a single Pokémon.",
           },
           {
             id: 9,
             name: "Revive",
-            type: "healing",
-            price: 1500,
+            type: "medicine",
             description:
               "A medicine that revives a fainted Pokémon. It restores half the Pokémon's maximum HP.",
           },
           {
             id: 10,
             name: "Rare Candy",
-            type: "enhancement",
-            price: 4800,
+            type: "vitamins",
             description:
               "A candy that is packed with energy. It raises the level of a single Pokémon by one.",
           },
           {
             id: 11,
             name: "X Attack",
-            type: "battle",
-            price: 500,
+            type: "battle items",
             description:
               "An item that raises the Attack stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.",
           },
           {
             id: 12,
             name: "X Defense",
-            type: "battle",
-            price: 550,
+            type: "battle items",
             description:
               "An item that raises the Defense stat of a Pokémon in battle. It wears off if the Pokémon is withdrawn.",
           },
