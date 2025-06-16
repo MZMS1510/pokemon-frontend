@@ -34,7 +34,6 @@ export default function TrainerDetail() {
     return <div className="text-center mt-10 text-red-500">{error}</div>;
   if (!trainer)
     return <div className="text-center mt-10">Trainer not found</div>;
-
   // Extract team Pokemon
   const teamPokemon = [];
   if (trainer.team) {
@@ -53,6 +52,11 @@ export default function TrainerDetail() {
     });
   }
 
+  // Get boxed Pokemon count
+  const boxedPokemonCount = trainer.boxedPokemon
+    ? trainer.boxedPokemon.length
+    : 0;
+
   return (
     <div className="container mx-auto px-4 py-8">
       <Link
@@ -60,18 +64,17 @@ export default function TrainerDetail() {
         className="text-blue-500 hover:underline mb-4 inline-block"
       >
         ← Back to Trainers
-      </Link>
-
+      </Link>{" "}
       {/* Trainer Info */}
       <div className="bg-gray-400 rounded-lg shadow-lg p-6 mb-8">
         <h1 className="text-4xl font-bold mb-4">{trainer.name}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <p className="text-xl">💰 Money: ${trainer.money}</p>
           <p className="text-xl">🏆 Badges: {trainer.badges}</p>
           <p className="text-xl">👥 Team Size: {teamPokemon.length}/6</p>
+          <p className="text-xl">📦 Box: {boxedPokemonCount} Pokemon</p>
         </div>
       </div>
-
       {/* Team Section */}
       <div className="mb-8">
         <h2 className="text-3xl font-bold mb-6">Team</h2>{" "}
@@ -88,10 +91,9 @@ export default function TrainerDetail() {
             </p>
           </div>
         )}
-      </div>
-
+      </div>{" "}
       {/* Items Section */}
-      <div>
+      <div className="mb-8">
         <h2 className="text-3xl font-bold mb-6">Items</h2>
         {trainer.items && trainer.items.length > 0 ? (
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -114,6 +116,26 @@ export default function TrainerDetail() {
           <div className="text-center py-8 bg-gray-100 rounded-lg">
             <p className="text-gray-600">
               This trainer has no items in their inventory.
+            </p>
+          </div>
+        )}
+      </div>
+      {/* Pokemon Box Section */}
+      <div>
+        <h2 className="text-3xl font-bold mb-6">Pokemon Box</h2>
+        {trainer.boxedPokemon && trainer.boxedPokemon.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
+            {trainer.boxedPokemon.map((boxEntry, index) => (
+              <PokemonCard
+                key={boxEntry.pokemon?.id || index}
+                pokemon={boxEntry.pokemon}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8 bg-gray-100 rounded-lg">
+            <p className="text-gray-600">
+              This trainer has no Pokemon in their box.
             </p>
           </div>
         )}
