@@ -4,9 +4,11 @@ export default function Home() {
   return (
     <>
       {/* Hero section */}
-      <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-4xl font-bold mb-4">Welcome to PokéBase</h1>
-        <p className="text-lg mb-8">
+      <div className="flex flex-col items-center justify-center h-96 max-h-screen">
+        <h1 className="text-4xl font-bold mb-4 text-center">
+          Welcome to PokéBase
+        </h1>
+        <p className="text-lg mb-8 text-center">
           Create teams and learn more about the pokémons!
         </p>
       </div>

@@ -42,7 +42,7 @@ export default function PokemonListItem({ item: pokemon = {} }) {
     Bug: "border-green-700",
     Ghost: "border-indigo-800",
     Steel: "border-gray-400",
-    Normal: "border-gray-200",
+    Normal: "border-gray-300",
     Default: "border-white",
   };
 
@@ -64,7 +64,7 @@ export default function PokemonListItem({ item: pokemon = {} }) {
     Bug: "bg-green-400",
     Ghost: "bg-indigo-500",
     Steel: "bg-gray-300",
-    Normal: "bg-gray-100",
+    Normal: "bg-gray-200",
     Default: "bg-gray-100",
   };
 
@@ -86,7 +86,7 @@ export default function PokemonListItem({ item: pokemon = {} }) {
     Bug: "bg-green-500",
     Ghost: "bg-indigo-600",
     Steel: "bg-gray-400",
-    Normal: "bg-gray-200",
+    Normal: "bg-gray-300",
     Default: "bg-gray-200",
   };
 
@@ -105,7 +105,7 @@ export default function PokemonListItem({ item: pokemon = {} }) {
             className="max-w-32 w-1/4"
           />
           <p className="opacity-80 text-xl">#{pokedex_id}</p>
-          <p className="font-bold text-4xl">{name}</p>
+          <p className="font-bold text-2xl md:text-4xl">{name}</p>
         </div>
         <div className="flex justify-center mt-4 gap-5 text-xl">
           {primaryType && (

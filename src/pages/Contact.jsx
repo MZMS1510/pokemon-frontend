@@ -6,7 +6,7 @@ export default function Contact() {
         If you have any questions or feedback, feel free to reach out to us!
       </p>
 
-      <p className="text-xs text-center text-gray-400">
+      <p className="text-xs text-center text-gray-400 p-2">
         You can fill the forms down here or contact us trough our email{" "}
         <a href="mailto:mvmzms@gmail.com" className="underline">
           mvmzms@gmail.com
@@ -15,7 +15,7 @@ export default function Contact() {
 
       <br />
 
-      <form className="flex flex-col gap-4 items-center w-1/2 h-[80vh] mx-auto">
+      <form className="flex flex-col gap-4 items-center p-2 md:w-1/2 h-[80vh] mx-auto">
         <div className="flex flex-col w-full">
           <label htmlFor="name">Name:</label>
           <input
