@@ -1,11 +1,35 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Card from "./Card";
 
 export default function PokemonCard({ pokemon = {} }) {
-  if (!pokemon) return null;
+  const [spriteUrl, setSpriteUrl] = useState("");
 
   const species = pokemon.pokemonSpecies || {};
   const primaryType = species.primaryType || {};
   const secondaryType = species.secondaryType || {};
+
+  useEffect(() => {
+    const fetchSprite = async () => {
+      if (species.pokedex_id) {
+        try {
+          const response = await axios.get(
+            `https://pokeapi.co/api/v2/pokemon/${species.pokedex_id}`
+          );
+
+          setSpriteUrl(
+            response.data.sprites.other["official-artwork"].front_default
+          );
+        } catch (err) {
+          console.error("Error fetching sprite:", err);
+        }
+      }
+    };
+
+    fetchSprite();
+  }, [species.pokedex_id]);
+
+  if (!pokemon) return null;
 
   const getTypeColor = (typeName) => {
     const colors = {
@@ -30,45 +54,59 @@ export default function PokemonCard({ pokemon = {} }) {
     };
     return colors[typeName?.toLowerCase()] || "bg-gray-400";
   };
-
   return (
     <Card>
-      <div className="flex flex-col items-center p-4">
-        <h3 className="text-lg font-bold mb-2">
-          {species.name || "Unknown Species"}
-        </h3>
-        <p className="text-sm text-gray-600 mb-2">
-          Nickname: {pokemon.nickname || "None"}
-        </p>
-        <p className="text-sm text-gray-600 mb-3">
-          Level: {pokemon.level || 1}
-        </p>
+      <div className="flex flex-col items-center p-4 min-h-80">
+        {/* Pokemon Image */}
+        {spriteUrl && (
+          <div className="mb-4 flex-shrink-0">
+            <img
+              src={spriteUrl}
+              alt={`${species.name || "Pokemon"} sprite`}
+              className="w-32 h-32 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain"
+            />
+          </div>
+        )}
 
-        <div className="flex gap-2 mb-3">
-          {primaryType.name && (
-            <span
-              className={`px-3 py-1 rounded-full text-white text-xs font-semibold ${getTypeColor(
-                primaryType.name
-              )}`}
-            >
-              {primaryType.name}
-            </span>
-          )}
-          {secondaryType.name && (
-            <span
-              className={`px-3 py-1 rounded-full text-white text-xs font-semibold ${getTypeColor(
-                secondaryType.name
-              )}`}
-            >
-              {secondaryType.name}
-            </span>
-          )}
-        </div>
+        <div className="flex-1 flex flex-col justify-between w-full">
+          <div className="text-center mb-4">
+            <h3 className="text-xl font-bold mb-2 break-words">
+              {species.name || "Unknown Species"}
+            </h3>
+            <p className="text-sm text-gray-600 mb-1">
+              Nickname: {pokemon.nickname || "None"}
+            </p>
+            <p className="text-sm text-gray-600 mb-3">
+              Level: {pokemon.level || 1}
+            </p>
+          </div>
 
-        <div className="text-xs text-center text-gray-500">
-          <p>HP: {pokemon.hp || species.base_hp || "?"}</p>
-          <p>Attack: {pokemon.attack || species.base_attack || "?"}</p>
-          <p>Defense: {pokemon.defense || species.base_defense || "?"}</p>
+          <div className="flex flex-wrap gap-2 mb-4 justify-center">
+            {primaryType.name && (
+              <span
+                className={`px-3 py-1 rounded-full text-white text-xs font-semibold ${getTypeColor(
+                  primaryType.name
+                )}`}
+              >
+                {primaryType.name}
+              </span>
+            )}
+            {secondaryType.name && (
+              <span
+                className={`px-3 py-1 rounded-full text-white text-xs font-semibold ${getTypeColor(
+                  secondaryType.name
+                )}`}
+              >
+                {secondaryType.name}
+              </span>
+            )}
+          </div>
+
+          <div className="text-xs text-center text-gray-500 space-y-1">
+            <p>HP: {pokemon.hp || species.base_hp || "?"}</p>
+            <p>Attack: {pokemon.atk || species.base_atk || "?"}</p>
+            <p>Defense: {pokemon.def || species.base_def || "?"}</p>
+          </div>
         </div>
       </div>
     </Card>
